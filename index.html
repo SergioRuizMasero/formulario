@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    <link href="css/tabs.css" rel="stylesheet" type="text/css">
+    
+   
+</head>
+<body onload="detectCookie()">
+
+    <center>
+      <button id="boton" onclick="ocultar()" class="desplegar">Identificate</button>
+    </center>
+
+        <div class="tab" id="tab1">
+          <button id="registro" class="tablinks" onclick="registro(event, 'SignUp')">SIGN UP</button>
+          <button id="login" class="tablinks" onclick="registro(event, 'LogIn')">LOG IN</button>
+        </div>
+
+        
+        <div id="SignUp" class="tabcontent">
+          <form  id="formRegistro" method="post" action="registrado.html">
+            <h4>Rellene los datos para crearte una cuenta</h4>
+                <input type="text" class="cortos" name="nombre" id="nombre" placeholder="Nombre*" autofocus required>
+                <input type="text" style="margin-left: 20px;" class="cortos" name="apellidos" id="apellidos" placeholder="Apellidos*" required><br><br>
+                <input type="email" class="largos" name="email" id="email" placeholder="Correo electronico*" required><br><br>
+                <input type="password" class="largos" name="contraseña" id="contraseña" placeholder="Contraseña*" minlength="8" required><br><br>
+                <input type="password" class="largos" name="confirmacion" id="confirmacion" placeholder="Confirmar Contraseña*" minlength="8" required><br><br>
+                <input type="date" class="cortos" name="fecha" id="fecha"><br><br>
+                <button type="submit" class="button button-block" name="registro" id="botonRegistro"/>REGISTRARSE</button>        
+          </form>
+
+            
+        </div>
+        
+        <div id="LogIn" class="tabcontent">
+          <form id="formLogin">
+            <h4>Introduce tus datos para iniciar sesion</h4>
+              <input type="email" class="largos" name="email" id="emailLogin" placeholder="Correo electronico" required><br><br>
+              <input type="password" class="largos" name="contraseña" id="contraseñaLogin" placeholder="Contraseña" required>
+              <button type="button" onclick="mostrarContrasena()">Mostrar Contraseña</button><br>
+              <input type="checkbox" name="recordar" id="recordar"><label>Recordar contraseña</label><br><br>
+              <button type="submit" class="button button-block" name="login" id="login"/>INICIAR SESION</button>
+          </form> 
+        </div>
+
+      
+        
+        <script src="js/script.js"></script>
+        <script src="js/script2.js"></script>
+        <script src="js/contraseña.js"></script>
+        <script src="js/cookies.js"></script>
+    
+</body>
+</html>
