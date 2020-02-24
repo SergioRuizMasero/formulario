@@ -1,24 +1,92 @@
-function registro(evt, opcion) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(opcion).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
+const correos = [];
+const contraseñas = [];
 
-  function ocultar() {
+const botonRegistro = 
+document.getElementById("formRegistro")
+.addEventListener("submit",cuentasRegistradas, false);
 
-    document.getElementById("tab1").style.opacity = "1";
-    document.getElementById("boton").style.opacity = "0";
-    document.getElementById("boton").style.animation="desaparecer 1s ease-out";
-    document.getElementById("tab1").style.animation="mostrar 2s ease-in";
-    document.getElementById("login").click();
+const botonLogin = 
+document.getElementById("formLogin").addEventListener("submit",login, false);
+
+function cuentasRegistradas(event) {
+    event.preventDefault();
+    var user = document.getElementById("email").value;
+    var password= document.getElementById("contraseña").value;
+
+    if (validaCorreo(user) || validaTelefono(user)) {
     
+        if (!correos.includes(user)){
+
+            correos.push(user);
+            contraseñas.push(password);
+            
+            setCookie("usuario",user,1);
+            setCookie("password",password,1);
+            console.log(correos);
+            limpiarForm();
+            alert("Registrado");
+            document.getElementById("login").click();
+
+        } else {
+
+            alert("Ya existe el correo");
+        }
     
-  }
+    } else {
+
+    alert("El campo email tiene que tener un formato correcto.");
+}
+    
+}
+
+function login(event) {
+
+    var user = document.getElementById("emailLogin").value;
+    var password= document.getElementById("contraseñaLogin").value;
+
+    if (getCookie("usuario")===user && getCookie("password")===password){
+        
+        event.preventDefault();
+        redireccionarPag();
+    } else {
+
+        alert("Usuario/Contraseña incorrectos.");
+        event.preventDefault();
+    }
+
+}
+
+function limpiarForm() {
+
+    document.getElementById("formRegistro").reset();
+}
+
+
+function redireccionarPag() {
+
+    location.href="registrado.html";
+
+}
+
+
+function validaCorreo(email) {
+
+    var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email) ? true : false;
+
+    
+}
+
+function validaTelefono(telefono) {
+
+    var regex = /^([9,7,6]{1})+([0-9]{8})$/;
+    return regex.test(telefono) ? true : false;
+
+    
+}
+
+function eventoRegistro(event) {
+    event.preventDefault();
+    alert("entra");
+}
+
