@@ -10,12 +10,43 @@
                     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
                 }
 
+
 // - eliminar cookies
     //función que dado el nombre de una cookie (cname) la elimina. 
         
+        /*
         function removeCookie(cname){
             setCookie(cname,"",-1);
         }
+        */
+
+        function borrarCookie(cname){
+            document.cookie = cname + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+        }
+
+        function salir(){
+    
+           borrarCookie('usuario');
+           borrarCookie('password');
+            pInicio();
+            
+        }
+
+        function registrado(usuario){
+    
+            if(document.cookie){ 
+                
+                console.log("asdasd");
+                      
+            }
+        }
+
+       function pInicio() {
+
+        location.href="index.html";
+        setCookie("estado","No estas logueado",1);
+        console.log("Has cerrado sesion.");
+       }
         
 // - leer cookies
     //función que dado el nombre de una cookie (cname) devuelve su contenido.

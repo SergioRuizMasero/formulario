@@ -1,3 +1,14 @@
+window.onload = iniciar;
+function iniciar() {
+
+    if(document.cookie == ""){
+        document.getElementById("botonRegistro").addEventListener("click", cuentasRegistradas,false);
+        document.getElementById("login").addEventListener("click", login,false);
+    }
+    else registrado();
+
+}
+
 const correos = [];
 const contraseñas = [];
 
@@ -22,10 +33,12 @@ function cuentasRegistradas(event) {
             
             setCookie("usuario",user,1);
             setCookie("password",password,1);
+            registrado(document.getElementById("email").value);
             console.log(correos);
             limpiarForm();
             alert("Registrado");
-            document.getElementById("login").click();
+            redireccionarPag();
+            //document.getElementById("login").click();
 
         } else {
 
@@ -65,6 +78,9 @@ function limpiarForm() {
 function redireccionarPag() {
 
     location.href="registrado.html";
+    setCookie("estado","Estas logueado");
+    
+
 
 }
 
