@@ -77,6 +77,7 @@ function validaCorreo(email) {
     
 }
 
+
 function validaTelefono(telefono) {
 
     var regex = /^([9,7,6]{1})+([0-9]{8})$/;
