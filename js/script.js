@@ -1,7 +1,7 @@
 window.onload = iniciar;
 function iniciar() {
 
-    if(document.cookie == ""){
+    if(getCookie('estado') == null){
         document.getElementById("botonRegistro").addEventListener("click", cuentasRegistradas,false);
         document.getElementById("login").addEventListener("click", login,false);
     }
@@ -24,15 +24,18 @@ function cuentasRegistradas(event) {
     var user = document.getElementById("email").value;
     var password= document.getElementById("contraseña").value;
 
-    if (validaCorreo(user) || validaTelefono(user)) {
-    
+    if ((validaCorreo(user) || validaTelefono(user)) ) {
+        console.log(password)
+        if(validarCont(password)){
         if (!correos.includes(user)){
 
             correos.push(user);
             contraseñas.push(password);
             
-            setCookie("usuario",user,1);
+            setCookie("email",user,1);
             setCookie("password",password,1);
+            setCookie('nombre', document.getElementById('nombre').value, 1);
+            setCookie('estado', 'logR', 1);
             registrado(document.getElementById("email").value);
             console.log(correos);
             limpiarForm();
@@ -44,7 +47,8 @@ function cuentasRegistradas(event) {
 
             alert("Ya existe el correo");
         }
-    
+        }
+        else alert('Contraseña no segura');
     } else {
 
     alert("El campo email tiene que tener un formato correcto.");
@@ -57,9 +61,11 @@ function login(event) {
     var user = document.getElementById("emailLogin").value;
     var password= document.getElementById("contraseñaLogin").value;
 
-    if (getCookie("usuario")===user && getCookie("password")===password){
+    if (getCookie("email")===user && getCookie("password")===password){
         
         event.preventDefault();
+        
+        setCookie('estado', 'logR', 1);
         redireccionarPag();
     } else {
 
@@ -78,7 +84,6 @@ function limpiarForm() {
 function redireccionarPag() {
 
     location.href="registrado.html";
-    setCookie("estado","Estas logueado");
     
 
 
@@ -100,6 +105,12 @@ function validaTelefono(telefono) {
     return regex.test(telefono) ? true : false;
 
     
+}
+
+function validarCont(contraseña){
+    var regex = new RegExp("/^(?=.\d)(?=.[@#-$%^&+=§!?])(?=.[a-z])(?=.[A-Z])[0-9A-Za-z@#-$%^&+=§!?]{8}$/");
+    console.log(regex.test(contraseña))
+    return /^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8}$/.test(contraseña) ? true : false;
 }
 
 function eventoRegistro(event) {

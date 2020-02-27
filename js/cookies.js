@@ -26,15 +26,14 @@
 
         function salir(){
     
-           borrarCookie('usuario');
-           borrarCookie('password');
+           borrarCookie('estado');
             pInicio();
             
         }
 
         function registrado(usuario){
     
-            if(document.cookie){ 
+            if(getCookie('estado') == 'logR'){ 
                 
                 console.log("asdasd");
                       
@@ -44,7 +43,6 @@
        function pInicio() {
 
         location.href="index.html";
-        setCookie("estado","No estas logueado",1);
         console.log("Has cerrado sesion.");
        }
         
