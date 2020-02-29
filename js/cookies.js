@@ -31,18 +31,39 @@
             
         }
 
-        function registrado(usuario){
+        function registrado(){
     
             if(getCookie('estado') == 'logR'){ 
                 
                 console.log("asdasd");
+                document.getElementById('mensajeRegistroC').innerHTML = 'Te has logeado con éxito ' + getCookie('nombre')
+                document.getElementById('registroCompletado').style.display = 'block';
+                document.getElementById('formulariosGeneral').style.display = 'none';
                       
             }
+
+            else if(getCookie('estado') == 'reg'){
+
+                document.getElementById('mensajeRegistroC').innerHTML = 'Te has registrado con éxito ' + getCookie('nombre')
+                document.getElementById('registroCompletado').style.display = 'block';
+                document.getElementById('formulariosGeneral').style.display = 'none';
+
+            }
+
+            else {
+
+                document.getElementById('formulariosGeneral').style.display = 'block';
+                document.getElementById('registroCompletado').style.display = 'none';
+
+            }
+
         }
 
        function pInicio() {
 
-        location.href="index.html";
+        //location.href="index.html";
+        registrado();
+        document.getElementById('contraseñaLogin').value = '';
         console.log("Has cerrado sesion.");
        }
         

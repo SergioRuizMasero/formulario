@@ -11,7 +11,7 @@
    
 </head>
 <body>
-
+<div id="formulariosGeneral">
     <center>
       <button id="boton" onclick="ocultar()" class="desplegar">Identificate</button>
     </center>
@@ -48,8 +48,13 @@
           </form> 
         </div>
 
-        
+      </div>
+        <div id="registroCompletado" style="display: none;">
 
+          <h2 id="mensajeRegistroC">Te has logueado con exito.</h2>
+          <button id='cerrarSesion' onclick="salir()">Cerrar sesion</button>
+
+        </div>
       
         
         <script src="js/animaciones.js"></script>

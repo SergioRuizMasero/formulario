@@ -35,12 +35,13 @@ function cuentasRegistradas(event) {
             setCookie("email",user,1);
             setCookie("password",password,1);
             setCookie('nombre', document.getElementById('nombre').value, 1);
-            setCookie('estado', 'logR', 1);
+            setCookie('estado', 'reg', 1);
             registrado(document.getElementById("email").value);
             console.log(correos);
             limpiarForm();
             alert("Registrado");
-            redireccionarPag();
+            //redireccionarPag();
+            registrado();
             //document.getElementById("login").click();
 
         } else {
@@ -66,7 +67,8 @@ function login(event) {
         event.preventDefault();
         
         setCookie('estado', 'logR', 1);
-        redireccionarPag();
+        //redireccionarPag();
+        registrado();
     } else {
 
         alert("Usuario/Contraseña incorrectos.");
