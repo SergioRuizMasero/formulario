@@ -108,9 +108,9 @@ function validaTelefono(telefono) {
 }
 
 function validarCont(contraseña){
-    var regex = new RegExp("/^(?=.\d)(?=.[@#-$%^&+=§!?])(?=.[a-z])(?=.[A-Z])[0-9A-Za-z@#-$%^&+=§!?]{8}$/");
+    var regex = new RegExp("/^(?=.\d)(?=.[@#-$%^&+=§!?])(?=.[a-z])(?=.[A-Z])[0-9A-Za-z@#-$%^&+=§!?]{8,}$/");
     console.log(regex.test(contraseña))
-    return /^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8}$/.test(contraseña) ? true : false;
+    return /^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,}$/.test(contraseña) ? true : false;
 }
 
 function eventoRegistro(event) {
